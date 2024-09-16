@@ -1,60 +1,104 @@
-# Experiment-01- Simple echo server and client using Python socket
+# InformationGathering
+Information Gathering Techiques
+
+# To perform information gathering techniques
 
 # AIM:
-To develop a simple webserver to serve html programming pages.
 
-## DESIGN STEPS:
+To perform information gathering techniques using kali linux 
+
+## STEPS:
 
 ### Step 1:
 
-Design of echo server and client using python socket
+Install kali linux either in partition or virtual box or in live mode
 
 ### Step 2:
 
-Implementation using Python code
+Investigate on the various categories of tools as follows:
 
 ### Step 3:
+Open terminal/browser and try execute necessary commands/use url to perform information gathering
+## Pen Test Tools Categories:
+Following Categories of pen test tools are identified for information gathering:
 
-Testing the server and client 
+Footprinting is a part of the reconnaissance process which is used for gathering possible information about a target computer system or network.
 
-## PROGRAM:
-### SERVER CODE: echo-server.py:
-```
-import socket
-HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
-PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.bind((HOST, PORT))
-    s.listen()
-    conn, addr = s.accept()
-    with conn:
-        print(f"Connected by {addr}")
-        while True:
-            data = conn.recv(1024)
-            if not data:
-                break
-            conn.sendall(data)
-```
+http://www.whois.com/whois website to get detailed information about a domain name information including its owner, its registrar, date of registration, expiry, name server, owner's contact information, etc.
 
-### CLIENT CODE: echo-client.py:
-```
-import socket
-HOST = "127.0.0.1"  # The server's hostname or IP address
-PORT = 65432  # The port used by the server
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    s.sendall(b"Hello, world")
-    data = s.recv(1024)
-print(f"Received {data!r}")
-```
 
 ## OUTPUT:
-### SERVER OUTPUT:
-![image](https://github.com/pradeepasri26/Echoserver/assets/131433142/a89b0d25-0b41-4b95-9eeb-9c7f6ed92533)
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/a2b13e20-b504-4901-a35d-1d53247726af)
+## Finding IP adress:
+ping command is available on Windows as well as on Linux OS. Following is the example to find out the IP address of saveetha.ac.in.
+```
+ping saveetha.ac.in
+```
+## Output:
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/0f9a3d5c-ae8c-4d1b-a4f5-2a025ed498a5)
+## Finding Hosting Company:
+get further detail by using ip2location.com website.
 
-### CLIENT SIDE:
-![image](https://github.com/pradeepasri26/Echoserver/assets/131433142/802600e0-45fe-4a33-9388-e123fbdc7087)
+## Output:
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/bbf4095f-00d4-49b8-a950-ddd504d0d81e)
+## History of the wbsite:
+## Output:
+https://web.archive.org/
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/f5166239-895a-4e51-924a-1771ccea3ec8)
+## Web server Fingerprint:
+## Netcat:
+```
+nc 172.17.52.118 80
+```
+## Output:
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/2f794aca-900f-4e44-b5e4-9eff031425ab)
+## nmap:
+```
+nmap -p 21 -sV --script=banner ftp.vim.org
+```
+## Output:
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/f8eebdf9-67ff-42c0-ae3b-b126d20576bb)
+## Whatweb:
+```
+whatweb infosys.com
+```
+```
+whatweb zoho.com
+```
+```
+whatweb -v -a 3 172.17.52.201
+```
+## Output:
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/13003241-f18f-4e84-b15d-86a327e9c68c)
+## httprint:
+```
+httprint -h 172.17.52.201 -s /usr/share/httprint/signatures.txt -P0 |more
+```
+## Output:
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/e1275ae0-7aef-43d9-a8bf-99be791d0070)
+## Tracing the Location:
+## TCP Traceroute:
+```
+sudo traceroute -T www.saveetha.ac.in
+```
+## Output:
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/67469d67-bba1-4fa1-925d-1bc35c4146ca)
+## UDP Traceroute:
+```
+sudo traceroute -U www.saveetha.ac.in
+```
+## Output:
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/6f980827-c16f-4865-afff-1de0714937fd)
+## ICMP Traceroute:
+```
+sudo traceroute  www.saveetha.ac.in
+```
+## Output:
+![image](https://github.com/gokul-sureshkumar/InformationGathering/assets/121148715/5b0e049e-98ee-4849-ad1c-de8d8189927e)
+
+
+
 
 
 ## RESULT:
-The program is executed successfully
+The information gathering techniques tools/procedure were  identified successfully
